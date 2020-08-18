@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleVoteOf } from '../reducers/anecdoteReducer'
 import { voteNotification } from '../reducers/notificationReducer'
-import { connect } from 'react-redux'
+
 
 const Anecdotes = () => {
   const dispatch = useDispatch()
@@ -32,6 +32,4 @@ const Anecdotes = () => {
   )
 }
 
-
-const ConnectedAnecdotes = connect()(Anecdotes)
 export default Anecdotes

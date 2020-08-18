@@ -1,6 +1,5 @@
-const notificationAtStart = ''
-
-const initialState = notificationAtStart
+let previousNotification = ''
+const initialState = ''
 
 const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -17,21 +16,23 @@ const notificationReducer = (state = initialState, action) => {
 
 export const toggleNotification = (content, timeout) => {
   return async dispatch => {
+    clearTimeout(previousNotification)
     dispatch({
       type: 'ADD',
       data: content
     })
-    setTimeout(() => dispatch(emptyNotification()), timeout * 1000)
+    previousNotification = setTimeout(() => dispatch(emptyNotification()), timeout * 1000)
   }
 }
 
 export const voteNotification = (content, timeout) => {
   return async dispatch => {
+    clearTimeout(previousNotification)
     dispatch({
       type: 'VOTENOTE',
       data: content
     })
-    setTimeout(() => dispatch(emptyNotification()), timeout * 1000)
+    previousNotification = setTimeout(() => dispatch(emptyNotification()), timeout * 1000)
   }
 }
 
